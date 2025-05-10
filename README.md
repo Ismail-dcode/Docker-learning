@@ -22,5 +22,7 @@ This is my personal reference for essential Docker commands while learning conta
 | View container logs          | `docker logs <container_id>`                |
 | Execute command inside container | `docker exec -it <container_id> bash`    |
 
+
+
 ---
 
