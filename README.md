@@ -26,3 +26,7 @@ This is my personal reference for essential Docker commands while learning conta
 
 ---
 
+## Port Mapping 
+
+`docker run -it -p 3000:3000 < Image name >`
+
