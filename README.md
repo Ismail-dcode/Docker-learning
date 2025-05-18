@@ -22,19 +22,12 @@ This is my personal reference for essential Docker commands while learning conta
 | View container logs          | `docker logs <container_id>`                |
 | Execute command inside container | `docker exec -it <container_id> bash`    |
 
-
-
 ---
 
 
 ## Port Mapping 
 
 `docker run -it -p 3000:3000 <image_name>`
-
-## Port Mapping [ with change in .env variables ]
-
-`docker run -it -e PORT=4000 -p 3000:3000 < image_name>`
-
 
 <br>
 
@@ -43,3 +36,51 @@ node App is in the /docker-app file
 
 `docker build  -t <image_name> .`
 `docker build  -t fisrt-mynode .`
+
+## main.js file 
+```javascript
+      const express = require('express');
+const app = express();
+
+const PORT = process.env.PORT || 8000;
+
+app.get('/', (req, res) => {
+    return res.json({ message: "Hello Node from container v2" });
+});
+
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+```
+
+##  Dockerfile 
+```javascript
+FROM ubuntu
+
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get upgrade -y
+RUN apt-get install -y nodejs
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+COPY main.js main.js
+
+RUN npm install
+
+ENTRYPOINT ["node", "main.js"]
+   
+```
+
+
+
+## Port Mapping [ with change in .env variables ]
+
+`docker run -it -e PORT=4000 -p 3000:3000 < image_name>`
+
+
+![image](Local-app.png)
+
+Simply runing on PORT localhost:4000
+
+
+
