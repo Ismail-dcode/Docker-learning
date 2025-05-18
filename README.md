@@ -78,9 +78,19 @@ ENTRYPOINT ["node", "main.js"]
 `docker run -it -e PORT=4000 -p 3000:3000 < image_name>`
 
 
+# 1] first create a public repository on [hub.docker.com]  
+
+## 2] Docker Public image upload on [hub.docker.com] 
+`docker build  -t ismaildcode/first-dockerapp .`
+
+### 3] You can pull Image Using this command 
+`docker pull ismaildcode/first-dockerapp:latest`
+
+simple Node app for understand how to create public image  
+
 ![image](Local-app.png)
 
+
+
 Simply runing on PORT localhost:4000
-
-
 
